@@ -1,9 +1,29 @@
 import React from 'react';
+import CardList from '../../components/Card';
+import Menu from '../../components/Menu';
+import { Base } from '../baseStyles';
 
-import { Container } from './styles';
-
-function ListPage() {
-  return <div />;
+function ListPage({ data }) {
+  return (
+    <Base>
+      <Menu />
+      <div style={{ marginTop: '100px' }}>
+        {data.map((item) => {
+          return (
+            <CardList
+              key={item.id.videoId}
+              channelTitle={item.snippet.channelTitle}
+              description={item.snippet.description}
+              publishedTime={item.snippet.publishedTime}
+              thumbnails={item.snippet.thumbnails}
+              title={item.snippet.title}
+              id={item.id.videoId}
+            />
+          );
+        })}
+      </div>
+    </Base>
+  );
 }
 
 export default ListPage;
