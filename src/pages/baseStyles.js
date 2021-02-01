@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Base = styled.div`
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
