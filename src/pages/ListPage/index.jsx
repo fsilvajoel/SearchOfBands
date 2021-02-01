@@ -7,7 +7,7 @@ function ListPage({ data }) {
   return (
     <Base>
       <Menu />
-      <div style={{ marginTop: '100px' }}>
+      <div style={{ margin: '100px 0 100px 0' }}>
         {data.map((item) => {
           return (
             <CardList

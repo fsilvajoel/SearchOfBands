@@ -4,7 +4,7 @@ import searchYoutube from 'youtube-api-v3-search';
 
 import { API_KEY_YT } from '../services/api';
 import ListPage from './ListPage';
-import logo from './logo.png';
+import logo from '../logo.png';
 import { Base } from './baseStyles';
 function Home() {
   const [result, setResult] = useState({});
@@ -12,13 +12,13 @@ function Home() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    retorno();
+    retorno(data);
   };
 
-  const retorno = () => {
+  const retorno = (query) => {
     const options = {
-      q: 'queen',
-      // q: query,
+      // q: 'queen',
+      q: query,
       part: 'snippet',
       type: 'video',
     };
