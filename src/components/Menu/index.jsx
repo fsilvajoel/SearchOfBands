@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 export const Container = styled.header`
   position: fixed;
+  z-index: 2;
   display: flex;
   flex-direction: row;
   top: 0;
