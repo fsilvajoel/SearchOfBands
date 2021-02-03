@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../../logo.png';
-import SearchIcon from '@material-ui/icons/Search';
+import Search from '../Search';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 export const Container = styled.header`
   position: fixed;
@@ -39,7 +40,8 @@ export const Container = styled.header`
     height: 35px;
     padding: 30px;
   }
-  p {
+  a {
+    text-decoration: none;
     font-size: 15px;
     color: #fff;
     padding-right: 30px;
@@ -49,14 +51,14 @@ export const Container = styled.header`
 function Menu() {
   return (
     <Container>
-      <img src={logo} alt="Voltar ao Início" title="Voltar ao Início" />
-      <div className="searchMenu">
-        <input name="search" placeholder="pesquise a banda" />
-        <button>
-          <SearchIcon />
-        </button>
-      </div>
-      <p>jfilva@inf.ufsm.br</p>
+      <a href="/">
+        <img src={logo} alt="Voltar ao Início" title="Voltar ao Início" />
+      </a>
+      <Search />
+      <a target="blank" href="https://github.com/fsilvajoel">
+        <GitHubIcon />
+        <label>Projeto</label>
+      </a>
     </Container>
   );
 }
