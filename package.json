@@ -18,7 +18,6 @@
     "react-youtube": "^7.13.1",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4",
-    "youtube-api-search": "^0.0.5",
     "youtube-api-v3-search": "^1.2.1"
   },
   "scripts": {

@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Aplicação Search of Bands
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição resumida
 
-## Available Scripts
+Foi desenvolvido uma aplicação frontend com o uso do framework React.js. A finalidade da mesma foi realizar a chamada à duas APIs diferentes a parir de uma caixa de busca. As APIS são:
+[TicketMaster](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/) e
+[Youtube](https://developers.google.com/youtube/v3/getting-started).
 
-In the project directory, you can run:
+## Objetivo
 
-### `yarn start`
+No [link](https://github.com/fsilvajoel/SearchOfBands/blob/main/Front%20End%20Test.pdf), é possível visualizar o PDF condendo o desafio proposto.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Sobre o "desenrolar" do projeto
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Houveram problemas relacionado ao consumo da API de eventos, a Ticketmaster, uma vez que as buscas realizadas não retornavam nenhum evento para o artista/ banda desejado. Desta forma, como o objetivo maior do desafio era provar as habilidades de frontEnd, trouxe uma ênfase em explorar recursos fortemente utilizados no mercado hoje em dia, e é claro, a estilização in natura dos componentes e layout.
 
-### `yarn test`
+Podem se destacar, dentre as ferramentas e tecnologias utilizadas, o uso de ganchos (hooks), e o gerenciador de estados APIContext. Vale lembrar que ambos são próprios do framework React, no entanto trazem o objetivo de criar funções onde o maior foco é a abstração da lógica em fragmentos que podem ser amplamente reaproveitados.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Além destas duas ferramentas, foi inserido também o uso da Styled-Components, uma bibliteca que tem como princípio, escrever código CSS dentro do Javascript. Dentre as grandes vantagens que ela trás, a possibilidade de trabalhar variáveis e lógica dentro do CSS é um grande facilitador. Outra vantagem que deve ser pontuada, é que a mesma traz uma abstração ao escrever propriedades css dos motores padrões dos navegadores (ex: Webkit, mos e ms).
 
-### `yarn build`
+Para tornar mais claro este ponto, segue uma explicação em código:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+_código CSS escrito pelo desenvolvedor_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```css
+ {
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+_o que o navegador recebe_
 
-### `yarn eject`
+```css
+ {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100px;
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Ferramentas Utilizadas
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React.js
+- ContextAPI - para gerenciamento e compartilhamento de estados globais
+- Axios - para realização de requisições para API
+- Prettier, eslint e editorconfig - para manter uma certa qualidade no código e seguir um padrão já utilizado no mercado, neste caso o padrão escolhido foi do airbnb.
+- Styled Components - para estilização CSS
+- React-Router-Dom - para gerenciamento de rotas
+- React-Hook-Form - para trabalhar com formulários e campos de input
+- Moment - para trabalhar com datas
+- Material UI para ícones e modal
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Libs usadas para facilitar o consumo de dados do YouTube**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- youtube-api-search
 
-## Learn More
+### Como testar o frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1 - Instalar dependência do projeto
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```shell
+yarn
+```
 
-### Code Splitting
+2 - Rodar aplicação
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```shell
+yarn start
+```
 
-### Analyzing the Bundle Size
+3 - Acessar:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+http://localhost:3000
+```
 
-### Making a Progressive Web App
+Prints:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img
+  src="https://raw.githubusercontent.com/fsilvajoel/SearchOfBands/master/assets/Screen-mobile.png"
+  width="300">
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img
+  src="https://raw.githubusercontent.com/fsilvajoel/SearchOfBands/master/assets/Screen-desktop.png"
+  width="800">
