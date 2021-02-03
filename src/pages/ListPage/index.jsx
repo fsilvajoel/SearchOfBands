@@ -1,27 +1,28 @@
 import React from 'react';
-import CardList from '../../components/Card';
+import Card from '../../components/Card';
 import Menu from '../../components/Menu';
 import { Base } from '../baseStyles';
-
-function ListPage({ data }) {
+import { Container } from './styles';
+function ListPage({ data, ticketMaster }) {
   return (
     <Base>
       <Menu />
-      <div style={{ margin: '100px 0 100px 0' }}>
+      <Container>
+        {/* <CardTicket data={ticketMaster} /> */}
         {data.map((item) => {
           return (
-            <CardList
+            <Card
               key={item.id.videoId}
               channelTitle={item.snippet.channelTitle}
               description={item.snippet.description}
-              publishedTime={item.snippet.publishedTime}
+              publishTime={item.snippet.publishTime}
               thumbnails={item.snippet.thumbnails}
               title={item.snippet.title}
               id={item.id.videoId}
             />
           );
         })}
-      </div>
+      </Container>
     </Base>
   );
 }
