@@ -21,7 +21,6 @@ function Card({ channelTitle, description, publishTime, thumbnails, title, id })
   return (
     <Container>
       <img src={thumbnails?.high?.url} alt={title} />
-      <Title>{title}</Title>
       <div className="media-resources">
         <Item>
           <TvIcon />
@@ -31,12 +30,13 @@ function Card({ channelTitle, description, publishTime, thumbnails, title, id })
           <ScheduleIcon />
           <label>{moment(publishTime).format('DD/MM/YYYY')}</label>
         </Item>
-        <Button variant="outlined" onClick={handleClickOpen}>
+        <Button onClick={handleClickOpen} color="secondary">
           <PlayArrowIcon />
           Play!
         </Button>
         <Modal open={open} onClose={handleClose} id={id} title={title} />
       </div>
+      <Title>{title}</Title>
       <p>Descrição do Vídeo</p>
       <Description>{description}</Description>
     </Container>
