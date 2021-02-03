@@ -1,13 +1,20 @@
 import axios from 'axios';
 
 export const API_KEY_YT = 'AIzaSyD-7kWuyTX5kYs4-8LllJciGCs7bii1FJQ';
-
-// events.json?size=1&apikey=
 const API_KEY_TM = 'BJJDuUOy8uTGfnCOsKN5e3ZfxI6EZiNS';
-export const apiYouTube = axios.create({
-  baseURL: '',
-});
 
 export const apiTicketMaster = axios.create({
-  baseURL: 'https://app.ticketmaster.com/discovery/v2/',
+  baseURL: 'https://app.ticketmaster.com',
 });
+
+export async function getDataTicketMaster(keyword) {
+  const response = await apiTicketMaster
+    .get(`/discovery/v2/`, {
+      params: {
+        keyword,
+        apikey: API_KEY_TM,
+      },
+    })
+    .catch((err) => Promise.reject(new Error(err)));
+  return response.data;
+}
