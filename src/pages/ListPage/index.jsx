@@ -1,15 +1,19 @@
 import React from 'react';
 import Card from '../../components/Card';
 import Menu from '../../components/Menu';
+import { useSearch } from '../../context/youTubeContext';
+
 import { Base } from '../baseStyles';
 import { Container } from './styles';
-function ListPage({ data, ticketMaster }) {
+function ListPage() {
+  const { youTubeData } = useSearch();
+
+  console.log('iaisudh', youTubeData);
   return (
     <Base>
       <Menu />
       <Container>
-        {/* <CardTicket data={ticketMaster} /> */}
-        {data.map((item) => {
+        {youTubeData?.map((item) => {
           return (
             <Card
               key={item.id.videoId}

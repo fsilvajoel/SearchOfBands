@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Base } from './baseStyles';
 import logo from '../logo.png';
