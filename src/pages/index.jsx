@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 import searchYoutube from 'youtube-api-v3-search';
 
-import { API_KEY_YT } from '../services/api';
+import { API_KEY_YT, getDataTicketMaster } from '../services/api';
+
+import { Button, TextField } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import ListPage from './ListPage';
-import logo from '../logo.png';
 import { Base } from './baseStyles';
+import logo from '../logo.png';
 function Home() {
-  const [result, setResult] = useState({});
+  const [youTubeData, setYouTubeData] = useState({});
+  const [ticketMasterData, setTicketMasterData] = useState({});
   const [fetching, setFetching] = useState(0);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    retorno(data);
+    findData(data.search);
   };
 
-  const retorno = (query) => {
-    const options = {
-      // q: 'queen',
+  const findData = (query) => {
+    const optionsForYT = {
       q: query,
       part: 'snippet',
       type: 'video',
     };
     setFetching(1);
-    searchYoutube(API_KEY_YT, options).then((res) => {
-      setResult(res.items);
+    getDataTicketMaster(query).then((res) => {
+      setTicketMasterData(res);
+    });
+    searchYoutube(API_KEY_YT, optionsForYT).then((res) => {
+      setYouTubeData(res.items);
       setFetching(2);
     });
   };
@@ -32,15 +38,21 @@ function Home() {
   return (
     <>
       {fetching === 2 ? (
-        <ListPage data={result} />
+        <ListPage data={youTubeData} ticketMaster={ticketMasterData} />
       ) : (
         <Base>
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" height="150px" />
+          <h1>Search of Bands</h1>
+          <p>Sua banda preferida a um click!</p>
+          {/* <div style={{ backgroundColor: 'white' }}> */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <input name="search" placeholder="pesquise a banda" ref={register} />
-            <button type="submit">Pesquisar</button>
+            {/* <input name="search" placeholder="Pesquise a banda" ref={register} /> */}
+            <TextField name="search" id="search" label="Pesquise a banda" color="primary" inputRef={register} />
+            <Button variant="contained" type="submit">
+              <SearchIcon />
+            </Button>
           </form>
-          {console.log('result', result)}
+          {/* </div> */}
         </Base>
       )}
     </>

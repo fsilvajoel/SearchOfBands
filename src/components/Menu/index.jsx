@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../../logo.png';
+import SearchIcon from '@material-ui/icons/Search';
+
 export const Container = styled.header`
   position: fixed;
   display: flex;
@@ -8,7 +10,6 @@ export const Container = styled.header`
   top: 0;
   color: #282c34;
   background-color: #c93939;
-  margin: 1px;
   border-radius: 5px;
   border-bottom: red;
   width: 100vw;
@@ -47,11 +48,12 @@ export const Container = styled.header`
 function Menu() {
   return (
     <Container>
-      {/* <img src={logo} alt="logo" onClick={() => setFetching(0)} /> */}
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="Voltar ao Início" title="Voltar ao Início" />
       <div className="searchMenu">
         <input name="search" placeholder="pesquise a banda" />
-        <button>Buscar</button>
+        <button>
+          <SearchIcon />
+        </button>
       </div>
       <p>jfilva@inf.ufsm.br</p>
     </Container>
